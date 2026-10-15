@@ -65,4 +65,16 @@ type APIError struct {
 }
 
 //PaginatedResponse wraps a list of items with paginaiton meta data
-type PaginatedResponse[T any] struct
+type PaginatedResponse[T any] struct {
+	Data []T `json:"data"`
+	Total int64 `json:"total"`
+	Page int `json:"page"`
+	Limit int `json:"limit"`
+}
+
+//Claims represents the data embedded inside our JWT
+type Claims struct {
+	UserID int64 `json:"user_id"`
+	Email string `json:"email"`
+	Role string `json:"role"`
+}
